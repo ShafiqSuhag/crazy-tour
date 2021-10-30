@@ -4527,6 +4527,11 @@
     "es5-ext" "^0.10.50"
     "type" "^1.0.1"
 
+"daisyui@^1.16.0":
+  "integrity" "sha512-/nVVnYqX7oxsIP68q2kOnOb48rbZLX2/smSrwzdSxF6olj8FCQ/90TU5J0gKvnWXOR6gyW8KuV8MQjwXE/oLYQ=="
+  "resolved" "https://registry.npmjs.org/daisyui/-/daisyui-1.16.0.tgz"
+  "version" "1.16.0"
+
 "damerau-levenshtein@^1.0.6":
   "integrity" "sha512-JVrozIeElnj3QzfUIt8tB8YMluBJom4Vw9qTPpjGYQ9fYlB3D/rb6OordUxf3xeFB35LKWs0xqcO5U6ySvBtug=="
   "resolved" "https://registry.npmjs.org/damerau-levenshtein/-/damerau-levenshtein-1.0.6.tgz"

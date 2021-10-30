@@ -3,6 +3,7 @@ import {
 } from "react-router-dom";
 import "tailwindcss/tailwind.css";
 import './App.css';
+import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import AuthProvider from "./context/AuthProvider";
@@ -34,6 +35,7 @@ function App() {
               <NotFound></NotFound>
             </Route>
           </Switch>
+          <Footer></Footer>
         </Router>
       </AuthProvider>
 
