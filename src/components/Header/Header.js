@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router';
 import { NavLink } from 'react-router-dom';
-import useFirebase from '../../hooks/useFirebase';
+import useAuth from '../../hooks/useAuth';
 
 const Header = () => {
+	let history = useHistory();
 	const [mobileMenuActive, setMobileMenuActive] = useState(false)
-	const { user , logOut} = useFirebase()
+	const { currentUser, logOut, setCurrentUser, setError } = useAuth()
 	const handleMobileMenuToogle = () => {
 		if (mobileMenuActive) {
 			setMobileMenuActive(false)
@@ -14,9 +16,27 @@ const Header = () => {
 		}
 	};
 
+
+	// auth 
+	const handleLogOut = () => {
+		logOut()
+			.then(() => {
+				console.log('logout successfull')
+
+				setCurrentUser({})
+				history.replace("/home")
+
+			}).catch((error) => {
+				console.log('logout error', error)
+				setError(error.message)
+
+			});
+	}
+	// auth /
+
 	return (
 		// <!-- Navbar goes here -->
-		<nav className="bg-white shadow-lg">
+		<nav className=" shadow-lg z-20 relative	">
 			<div className="max-w-6xl mx-auto px-4">
 				<div className="flex justify-between">
 					<div className="flex space-x-7">
@@ -24,16 +44,16 @@ const Header = () => {
 							{/* <!-- Website Logo --> */}
 							<a href="/" className="flex items-center py-4 px-2">
 								{/* <img src="logo.png" alt="Logo" className="h-8 w-8 mr-2"/> */}
-								<span className="font-semibold text-gray-500 text-lg">GHURI FIRI</span>
+								<span className="font-semibold text-white text-lg">CRAZY TOUR</span>
 							</a>
 						</div>
 						{/* <!-- Primary Navbar items --> */}
-						<div className="hidden md:flex items-center space-x-1">
+						<div className="hidden md:flex items-center space-x-1 font-sans">
 							<NavLink to="/home"><button className="py-4 px-2 text-green-500 border-b-4 border-green-500 font-semibold ">Home</button></NavLink>
-							<NavLink to="/contact"><button className="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">Contact</button></NavLink>
 
-							<a href="/home" className="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">Services</a>
-							<a href="/home" className="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">About</a>
+							<NavLink to="/contact"><button className="top-menu-link">Contact</button></NavLink>
+							<a href="/home" className="top-menu-link">Services</a>
+							<a href="/home" className="top-menu-link">About</a>
 
 						</div>
 					</div>
@@ -41,8 +61,8 @@ const Header = () => {
 					<div className="hidden md:flex items-center space-x-3 ">
 
 						{
-							user.email ?
-								<button onClick={logOut} className="py-2 px-2 font-medium text-gray-500 rounded hover:bg-green-500 hover:text-white transition duration-300">Log Out</button> :
+							currentUser?.email ?
+								<button onClick={handleLogOut} className="py-2 px-2 font-medium text-gray-500 rounded hover:bg-green-500 hover:text-white transition duration-300">Log Out</button> :
 								<>
 									<NavLink to="/login" className="py-2 px-2 font-medium text-gray-500 rounded hover:bg-green-500 hover:text-white transition duration-300">Log In</NavLink>
 									<a href="/home" className="py-2 px-2 font-medium text-white bg-green-500 rounded hover:bg-green-400 transition duration-300">Sign Up</a>

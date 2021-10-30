@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+/* 
+.btn-indigo {
+  @apply py-2 px-4 bg-indigo-500 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-opacity-75;
+} */
+
+.top-menu-link{
+  @apply  py-4 px-2 text-gray-50 font-semibold hover:text-green-500 transition duration-300
+}

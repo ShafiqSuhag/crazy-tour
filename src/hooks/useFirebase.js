@@ -7,58 +7,73 @@ import firebaseInit from '../firebase/firebase.init';
 
 firebaseInit()
 const useFirebase = () => {
+    const timeElapsed = Date.now()
+    const today = new Date(timeElapsed);
+    // useEffect(() => {
+        
+    // }, [])
 
     const [error, setError] = useState('')
-    const [user, setUser] = useState({})
+    const [currentUser, setCurrentUser] = useState({})
 
     const googleProvider = new GoogleAuthProvider();
     const auth = getAuth();
-    const googleSignIn = () => {
+    const signInWIthGoogle = () => {
         console.log('googleSignIn - fireabse page ')
-        signInWithPopup(auth, googleProvider)
-            .then((result) => {
-                console.log('user data - ', result.user)
-                setUser(result.user)
+        return signInWithPopup(auth, googleProvider)
+            // .then((result) => {
 
-                // ...
-            }).catch((error) => {
-                console.error("error google user ", error)
-                setError(error)
-            });
+            //     // setUser(result.user)
+            //     console.log('user data - ',today.toUTCString(), currentUser)
+
+            //     // ...
+            // }).catch((error) => {
+            //     console.error("error google user ", error)
+            //     setError(error)
+            // });
     }
 
 
 
     // oAuth Status Change Handle 
     onAuthStateChanged(auth, (user) => {
+
+
+        // console.log('onAuthStateChanged', today.toUTCString(), user, typeof(user), currentUser)
         if (user) {
-         setUser(user)
+            setCurrentUser(user)
         } else {
-        //   setUser({})
+            // setCurrentUser({})
         }
-      });
+    });
 
     // signOut 
-    
-    const logOut = ()=> {
-        signOut(auth).then(() => {
-            console.log('logout successfull')
-            // Sign-out successful.
-            setUser({});
-        }).catch((error) => {
-            console.log('logout error')
-            // An error happened.
-        });
-    }
-    
-    
 
-    return { 
-        user, 
+    const logOut = () => {
+        console.log('logout auth', auth)
+        return signOut(auth)
+        // .then(() => {
+        //     console.log('logout successfull')
+        //     // Sign-out successful.
+        //     // setUser({});
+        //     setCurrentUser({})
+        //     // console.log("after logout -", today.toUTCString(), currentUser)
+        // }).catch((error) => {
+        //     console.log('logout error', error)
+        //     // An error happened.
+        // });
+    }
+
+
+
+    return {
+        currentUser,
+        setCurrentUser,
         error,
-        googleSignIn, 
+        setError,
+        signInWIthGoogle,
         logOut
-     }
+    }
 
 };
 

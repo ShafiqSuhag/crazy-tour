@@ -2,14 +2,14 @@ import React from 'react';
 import { Redirect, Route } from 'react-router';
 import useAuth from '../../hooks/useAuth';
 
-const PrivateRoute =  ({ children, ...rest })  => {
-    
-  const { user } = useAuth()
-    return (
-      <Route
+const PrivateRoute = ({ children, ...rest }) => {
+  
+  const { currentUser } = useAuth()
+  return (
+    <Route
       {...rest}
       render={({ location }) =>
-        user.email ? (
+      currentUser.email ? (
           children
         ) : (
           <Redirect
@@ -21,7 +21,7 @@ const PrivateRoute =  ({ children, ...rest })  => {
         )
       }
     />
-    );
+  );
 };
 
 export default PrivateRoute;
