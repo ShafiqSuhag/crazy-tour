@@ -1,7 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import TourInfo from './TourInfo/TourInfo';
 
 const TourList = () => {
+
+
+    // tour list dynamic 
+    const [tours, setTours] = useState([])
+    useEffect(() => {
+        console.log('test--------')
+        fetch('http://localhost:5000/tours')
+            .then(response => response.json())
+            .then(async (result) => {
+                 setTours(result.tours)
+                await console.log('tour list - ', result.tours);
+                await console.log('tour list - ', tours);
+            })
+    }, [])
+
+    // tour list dynamic ./ 
+    // build delete function 
+
+
+
     return (
         <div className="overflow-x-auto overflow-y-auto">
 
@@ -21,9 +41,13 @@ const TourList = () => {
                             </thead>
                             <tbody className="text-gray-600 text-sm font-light">
                                 {/* core  */}
-                                <TourInfo></TourInfo>
-                                <TourInfo></TourInfo>
-                                <TourInfo></TourInfo>
+                                {
+
+                                    tours.map(tour => <TourInfo tour={tour}></TourInfo>)
+                                }
+
+                                {/* <TourInfo></TourInfo>
+                                <TourInfo></TourInfo> */}
                                 {/* core  */}
 
 

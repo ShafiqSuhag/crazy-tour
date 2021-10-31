@@ -1,22 +1,23 @@
 import React from 'react';
 
-const TourInfo = () => {
+const TourInfo = (props) => {
+    const {_id, title, duration, description, img, destination, price, rating, userPhotoUrl, userName} = props.tour;
     return (
         <tr className="border-b border-gray-200 hover:bg-gray-100">
             <td className="py-3 px-6 text-left">
                 <div className="flex items-center">
                     <div className="mr-2">
-                        <img alt="" className="w-6 h-6" src="https://img.icons8.com/color/100/000000/angularjs.png" />
+                        <img alt="" className="rounded-lg  w-6 h-6" src={img} />
                     </div>
-                    <span className="font-medium">Angular Project</span>
+                    <span className="font-medium">{title}</span>
                 </div>
             </td>
             <td className="py-3 px-6 text-left">
                 <div className="flex items-center">
                     <div className="mr-2">
-                        <img alt="" className="w-6 h-6 rounded-full" src="https://randomuser.me/api/portraits/men/3.jpg" />
+                        <img alt="" className="w-6 h-6 rounded-full" src={userPhotoUrl || "https://i.pinimg.com/originals/0c/3b/3a/0c3b3adb1a7530892e55ef36d3be6cb8.png"} />
                     </div>
-                    <span>Taylan Bush</span>
+                    <span>{userName || "anonymous"} </span>
                 </div>
             </td>
             <td className="py-3 px-6 text-center">

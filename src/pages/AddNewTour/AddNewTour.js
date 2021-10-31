@@ -1,14 +1,22 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import ReactStars from "react-rating-stars-component";
+import useAuth from '../../hooks/useAuth';
 
 
 const AddNewTour = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const { currentUser, logOut, setCurrentUser, setError } = useAuth()
+
+
     let newRating=0 
     const onSubmit = async (data) => {
         console.log(data)
+        // custom data 
         data["rating"]=newRating;
+        data["userPhotoUrl"]= currentUser.photoURL
+        data["userName"]= currentUser.displayName
+        // custom data ./
         fetch('http://localhost:5000/tour', {
             method: "POST",
             headers: {
