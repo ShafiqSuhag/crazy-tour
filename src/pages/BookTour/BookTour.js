@@ -27,6 +27,7 @@ const BookTour = () => {
         data["tourImg"] = tourDetails.img
         data["tourDuration"] = tourDetails.duration
         data["tourDestination"] = tourDetails.destination
+        data["orderStatus"] = "pending"
         
         // custom data ./
         fetch(serverUrl + '/my-orders', {
@@ -138,7 +139,7 @@ const BookTour = () => {
                     <div className="form-control">
                         <label className="input-group input-group-vertical input-group-lg mt-5">
                             <span>Note</span>
-                            <textarea  {...register("Notes", { required: false })} placeholder="" className="input input-bordered input-lg" />
+                            <textarea  {...register("notes", { required: false })} placeholder="" className="input input-bordered input-lg" />
                         </label>
                     </div>
                     <input type="submit" className="btn btn-outline btn-accent my-5 block" />

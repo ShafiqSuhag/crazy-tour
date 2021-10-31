@@ -56,6 +56,25 @@ const AllOrders = () => {
         }
     }
 
+    const handleActiveOrder = (id) => {
+        fetch(serverUrl + '/my-orders/' + id, {
+            method: "GET",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+        
+        })
+            .then(response => response.json())
+            .then(result => {
+                console.log(result)
+                const newOrderList = orderList.filter(order => order._id !== result.id)
+                setOrderList(newOrderList)
+
+            })
+            .catch(err => console.log("add tour error - ", err));
+
+    }
     return (
         <div className="overflow-x-auto overflow-y-auto">
 
@@ -68,7 +87,9 @@ const AllOrders = () => {
                                 <tr className="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
                                     <th className="py-3 px-6 text-left">Tour Info</th>
                                     <th className="py-3 px-6 text-center">Package Price</th>
+                                    <th className="py-3 px-6 text-left">Order Status </th>
                                     <th className="py-3 px-6 text-left">Purchased By</th>
+                                    
                                     <th className="py-3 px-6 text-center">Mobile</th>
                                     <th className="py-3 px-6 text-center">Actions</th>
                                 </tr>
@@ -77,7 +98,7 @@ const AllOrders = () => {
                                 {/* core  */}
                                 {
 
-                                    orderList.map(orderInfo => <OrderInfo key={orderInfo._id} orderInfo={orderInfo} handleDelete={handleDelete}></OrderInfo>)
+                                    orderList.map(orderInfo => <OrderInfo key={orderInfo._id} orderInfo={orderInfo} handleActiveOrder={handleActiveOrder} handleDelete={handleDelete}></OrderInfo>)
                                 }
 
                                 {/* <TourInfo></TourInfo>

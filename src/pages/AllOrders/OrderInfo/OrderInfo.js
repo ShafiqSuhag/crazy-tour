@@ -1,7 +1,7 @@
 import React from 'react';
 
 const OrderInfo = (props) => {
-    const { _id, fullName,mobileNumber, tourTitle, tourPrice, tourId, tourImg, Notes,   userPhotoUrl, userName, userId,tourDestination, tourDuration } = props.orderInfo;
+    const { _id, fullName, mobileNumber, tourTitle, tourPrice, tourId, tourImg, Notes, userPhotoUrl, userName, userId, tourDestination, tourDuration, orderStatus } = props.orderInfo;
     return (
         <tr className="border-b border-gray-200 hover:bg-gray-100">
             <td className="py-3 px-6 text-left">
@@ -17,6 +17,9 @@ const OrderInfo = (props) => {
             <td className="py-3 px-6 text-center">
                 <span className=" py-1 px-3 rounded-full text-md">${tourPrice}</span>
             </td>
+            <td className="py-3 px-6 text-center">
+                <span className=" py-1 px-3 rounded-full text-sm">{orderStatus}</span>
+            </td>
             <td className="py-3 px-6 text-left">
                 <div className="flex items-center">
                     <div className="mr-2">
@@ -25,21 +28,29 @@ const OrderInfo = (props) => {
                     <span>{fullName || "anonymous"} </span>
                 </div>
             </td>
-           
+
+
             <td className="py-3 px-6 text-center">
                 <span className=" py-1 px-3 rounded-full text-xl">{mobileNumber}</span>
             </td>
-           
-           
+
+
             <td className="py-3 px-6 text-center">
                 <div className="flex item-center justify-center">
-                   
-                    <div className="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
-                        
+                    {
+                        orderStatus === "pending" ?
+                            <button onClick={()=>props.handleActiveOrder(_id)} class="btn btn-sm">
+                                Active Order
+                            </button> : ""
+                    }
+
+                    <div className="w-4 mr-2 transform hover:text-purple-500 hover:scale-110 px-5">
+
                         <button onClick={() => props.handleDelete(_id, tourTitle)}>
-                        
+
+
                             <i class="far fa-trash-alt"></i>
-                           
+
                         </button>
 
                     </div>
