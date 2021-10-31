@@ -8,7 +8,7 @@ import useServerConfig from '../../hooks/useServerConfig';
 
 const AddNewTour = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const { currentUser, logOut, setCurrentUser, setError } = useAuth()
+    const { currentUser } = useAuth()
     const serverUrl = useServerConfig()
 
     let newRating = 0

@@ -8,11 +8,13 @@ import Header from "./components/Header/Header";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import AuthProvider from "./context/AuthProvider";
 import AddNewTour from "./pages/AddNewTour/AddNewTour";
+import AllOrders from "./pages/AllOrders/AllOrders";
 import BookTour from "./pages/BookTour/BookTour";
 import Contact from "./pages/Contact/Contact";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import MyBookins from "./pages/MyBookings/MyBookins";
+import MyOrder from "./pages/MyOrdder/MyOrder";
 import PageNotFound from "./pages/PageNotFound/PageNotFound";
 import ProfileInfo from "./pages/ProfileInfo/ProfileInfo";
 import TourList from "./pages/TourList/TourList";
@@ -47,6 +49,12 @@ function App() {
             </PrivateRoute>
             <PrivateRoute path="/my-bookings">
               <MyBookins></MyBookins>
+            </PrivateRoute>
+            <PrivateRoute path="/my-orders">
+              <MyOrder></MyOrder>
+            </PrivateRoute>
+            <PrivateRoute path="/all-orders">
+              <AllOrders></AllOrders>
             </PrivateRoute>
             <Route path="/login">
               <Login></Login>

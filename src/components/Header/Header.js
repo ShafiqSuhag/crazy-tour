@@ -6,7 +6,7 @@ import useAuth from '../../hooks/useAuth';
 const Header = () => {
 	let history = useHistory();
 	const [mobileMenuActive, setMobileMenuActive] = useState(false)
-	const { currentUser, logOut, setCurrentUser, setError } = useAuth()
+	const { currentUser, logOut, setCurrentUser, setError, setIsLoading } = useAuth()
 	const handleMobileMenuToogle = () => {
 		if (mobileMenuActive) {
 			setMobileMenuActive(false)
@@ -22,11 +22,12 @@ const Header = () => {
 		logOut()
 			.then(() => {
 				console.log('logout successfull')
-
+				setIsLoading(false)
 				setCurrentUser({})
 				history.replace("/home")
 
 			}).catch((error) => {
+				setIsLoading(false)
 				console.log('logout error', error)
 				setError(error.message)
 
@@ -38,8 +39,17 @@ const Header = () => {
 	const handleProfileInfo = () => {
 		history.replace("/profile-info")
 	}
-	const handleMyBookings = () => {
-		history.replace("/my-bookings")
+	// const handleMyBookings = () => {
+	// 	history.replace("/my-bookings")
+	// }
+	const handleNewTourPacakge = () => {
+		history.replace("/add-new-tour")
+	}
+	const handleMyOrders = () => {
+		history.replace("/my-orders")
+	}
+	const handleManageAllOrders = () => {
+		history.replace("/all-orders")
 	}
 	return (
 		// <!-- Navbar goes here -->
@@ -87,9 +97,13 @@ const Header = () => {
 												<svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /> </svg>
 											</button>
 											<ul className="dropdown-menu absolute hidden text-gray-700 pt-1 text-sm text-left">
-												<li className=""><button onClick={handleLogOut} className="bg-gray-200 py-2 px-2 w-full block whitespace-no-wrap font-medium text-gray-500  hover:bg-green-500 hover:text-white transition duration-300">Add New Tour</button></li>
-												<li className=""><button onClick={handleLogOut} className="text-left bg-gray-200 py-2 px-2 w-full block whitespace-no-wrap font-medium text-gray-500  hover:bg-green-500 hover:text-white transition duration-300">Tour List</button></li>
-												<li className=""><button onClick={handleMyBookings} className="text-left bg-gray-200 py-2 px-2 w-full block whitespace-no-wrap font-medium text-gray-500  hover:bg-green-500 hover:text-white transition duration-300">My Bookings</button></li>
+												
+												<li className=""><button onClick={handleMyOrders} className="text-left bg-gray-200 py-2 px-2 w-full block whitespace-no-wrap font-medium text-gray-500  hover:bg-green-500 hover:text-white transition duration-300">My Orders</button></li>
+												<li className=""><button onClick={handleManageAllOrders} className="text-left bg-gray-200 py-2 px-2 w-full block whitespace-no-wrap font-medium text-gray-500  hover:bg-green-500 hover:text-white transition duration-300">Manage All Orders</button></li>
+												<li className=""><button onClick={handleNewTourPacakge} className="text-left bg-gray-200 py-2 px-2 w-full block whitespace-no-wrap font-medium text-gray-500  hover:bg-green-500 hover:text-white transition duration-300">Add A New Tour Package</button></li>
+
+
+												
 												<li className=""><button onClick={handleProfileInfo} className="text-left bg-gray-200 py-2 px-2 w-full block whitespace-no-wrap font-medium text-gray-500  hover:bg-green-500 hover:text-white transition duration-300">Profile</button></li>
 												<li className=""><button onClick={handleLogOut} className="text-left bg-gray-200 py-2 px-2 w-full block whitespace-no-wrap font-medium text-gray-500  hover:bg-green-500 hover:text-white transition duration-300">Log Out</button></li>
 												

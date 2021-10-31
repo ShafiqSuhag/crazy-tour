@@ -31,7 +31,7 @@ const Home = () => {
 
             {/* slider  */}
             <div className="py-16">
-                <h1 className="text-center text-5xl text-purple-400 font-bold">Tour Plans </h1>
+                <h1 className="text-center text-5xl text-purple-600 font-bold">Tour Plans </h1>
             </div>
             {/* Tour Plans  */}
             {
@@ -52,7 +52,7 @@ const Home = () => {
             {/* Tour Plans  */}
             {/* service section  */}
             <div className="pb-16">
-                <h1 className="text-center text-5xl text-green-400 font-bold">Tourist Experience With US </h1>
+                <h1 className="text-center text-5xl text-indigo-600 font-bold">Tourist Experience With US </h1>
             </div>
             {/* Students testimonial  */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4  lg:grid-cols-3 mx-2 md:mx-10 xl:mx-36 pb-10 lg:pb-36 ">

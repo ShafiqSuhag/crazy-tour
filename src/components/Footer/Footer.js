@@ -5,10 +5,10 @@ const Footer = () => {
         <footer className="p-10 footer bg-neutral text-neutral-content">
             <div>
                 <span className="footer-title">Services</span>
-                <a href="/" className="link link-hover">Branding</a>
-                <a href="/" className="link link-hover">Design</a>
-                <a href="/" className="link link-hover">Marketing</a>
-                <a href="/" className="link link-hover">Advertisement</a>
+                <a href="/" className="link link-hover">Tour Packages</a>
+                <a href="/" className="link link-hover">Tour Plans</a>
+                <a href="/" className="link link-hover">Hotel Reservation</a>
+                <a href="/" className="link link-hover">Air Ticketing</a>
             </div>
             <div>
                 <span className="footer-title">Company</span>

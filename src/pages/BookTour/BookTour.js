@@ -14,7 +14,33 @@ const BookTour = () => {
 
     const { currentUser } = useAuth()
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data);
+    const onSubmit = data => {
+        console.log(data)
+        //  my-orders
+       
+        data["userPhotoUrl"] = currentUser.photoURL
+        data["userName"] = currentUser.displayName
+        data["userId"] = currentUser.uid
+        data["tourTitle"] = tourDetails.title
+        data["tourPrice"] = tourDetails.price
+        data["tourId"] = tourDetails._id
+        data["tourImg"] = tourDetails.img
+        data["tourDuration"] = tourDetails.duration
+        data["tourDestination"] = tourDetails.destination
+        
+        // custom data ./
+        fetch(serverUrl + '/my-orders', {
+            method: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(response => response.json())
+            .then(result => console.log(result))
+            .catch(err => console.log("add tour error - ", err));
+    }
     console.log(errors);
 
     console.log('book tour id ', id, typeof id)
@@ -74,16 +100,16 @@ const BookTour = () => {
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text">Your Name</span>
+                            <span className="label-text">Full Name*</span>
                         </label>
-                        <input type="text" placeholder="Full Name" value={currentUser.displayName} className="input input-info input-bordered" value="sohag"  {...register("Full Name", { required: true, maxLength: 80 })} />
+                        <input type="text" placeholder="Full Name" value={currentUser.displayName} className="input input-info input-bordered"  {...register("fullName", { required: true, maxLength: 80 })} />
                         {/* <label className="label">
                             <span className="label-text-alt">Please enter data</span>
                         </label> */}
                     </div>
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text">Email</span>
+                            <span className="label-text">Email*</span>
                         </label>
                         <input type="text" placeholder="Email" value={currentUser.email} className="input input-info input-bordered" {...register("Email", { required: true, pattern: /^\S+@\S+$/i })} />
                         {/* <label className="label">
@@ -92,18 +118,18 @@ const BookTour = () => {
                     </div>
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text">Mobile Number</span>
+                            <span className="label-text">Mobile Number*</span>
                         </label>
-                        <input type="tel" placeholder="Mobile number" className="input input-info input-bordered" {...register("Mobile number", { required: true, minLength: 6, maxLength: 12 })} />
+                        <input type="tel" placeholder="Mobile number" className="input input-info input-bordered" {...register("mobileNumber", { required: true, minLength: 6, maxLength: 12 })} />
                         {/* <label className="label">
                             <span className="label-text-alt">Please enter data</span>
                         </label> */}
                     </div>
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text">Departure Date</span>
+                            <span className="label-text">Departure Date*</span>
                         </label>
-                        <input type="date" placeholder="Departure Date" {...register("Departure Date", { required: true })} className="input input-info input-bordered" />
+                        <input type="date" placeholder="Departure Date" {...register("departureDate", { required: true })} className="input input-info input-bordered" />
                         {/* <label className="label">
                             <span className="label-text-alt">Please enter data</span>
                         </label> */}

@@ -55,6 +55,7 @@ const useFirebase = () => {
 
     const logOut = () => {
         console.log('logout auth', auth)
+        
         return signOut(auth)
         // .then(() => {
         //     console.log('logout successfull')
