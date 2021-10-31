@@ -15,7 +15,7 @@ const Testimonial = () => {
                     </span>
                 </p>
                 <div className="flex items-center mt-4">
-                    <a href="#" className="block relative">
+                    <a href="/" className="block relative">
                         <img alt="profil" src="https://www.tailwind-kit.com/images/person/1.jpg" className="mx-auto object-cover rounded-full h-10 w-10 " />
                     </a>
                     <div className="flex flex-col ml-2 justify-between">
@@ -24,7 +24,7 @@ const Testimonial = () => {
                         </span>
                         <span className="dark:text-gray-400 text-xs flex items-center">
                             User of Tail-Kit
-                            <img src="https://www.tailwind-kit.com/icons/rocket.svg" className="ml-2 h-4 w-4" />
+                            <img  alt=""  src="https://www.tailwind-kit.com/icons/rocket.svg" className="ml-2 h-4 w-4" />
                         </span>
                     </div>
                 </div>
@@ -40,7 +40,7 @@ const Testimonial = () => {
                     </span>
                 </p>
                 <div className="flex items-center mt-4">
-                    <a href="#" className="block relative">
+                    <a href="/" className="block relative">
                         <img alt="profil" src="https://www.tailwind-kit.com/images/person/1.jpg" className="mx-auto object-cover rounded-full h-10 w-10 " />
                     </a>
                     <div className="flex flex-col ml-2 justify-between">
@@ -49,7 +49,7 @@ const Testimonial = () => {
                         </span>
                         <span className="dark:text-gray-400 text-xs flex items-center">
                             User of Tail-Kit
-                            <img src="https://www.tailwind-kit.com/icons/rocket.svg" className="ml-2 h-4 w-4" />
+                            <img alt="" src="https://www.tailwind-kit.com/icons/rocket.svg" className="ml-2 h-4 w-4" />
                         </span>
                     </div>
                 </div>
@@ -65,7 +65,7 @@ const Testimonial = () => {
                     </span>
                 </p>
                 <div className="flex items-center mt-4">
-                    <a href="#" className="block relative">
+                    <a href="/" className="block relative">
                         <img alt="profil" src="https://www.tailwind-kit.com/images/person/1.jpg" className="mx-auto object-cover rounded-full h-10 w-10 " />
                     </a>
                     <div className="flex flex-col ml-2 justify-between">
@@ -74,7 +74,7 @@ const Testimonial = () => {
                         </span>
                         <span className="dark:text-gray-400 text-xs flex items-center">
                             User of Tail-Kit
-                            <img src="https://www.tailwind-kit.com/icons/rocket.svg" className="ml-2 h-4 w-4" />
+                            <img  alt="" src="https://www.tailwind-kit.com/icons/rocket.svg" className="ml-2 h-4 w-4" />
                         </span>
                     </div>
                 </div>

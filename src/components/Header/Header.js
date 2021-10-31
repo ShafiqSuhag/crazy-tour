@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 
 const Header = () => {
@@ -49,10 +49,10 @@ const Header = () => {
 					<div className="flex space-x-7">
 						<div>
 							{/* <!-- Website Logo --> */}
-							<a href="/" className="flex items-center py-4 px-2">
+							<Link to="/" className="flex items-center py-4 px-2">
 								{/* <img src="logo.png" alt="Logo" className="h-8 w-8 mr-2"/> */}
 								<span className="font-semibold text-black text-lg">CRAZY TOUR</span>
-							</a>
+							</Link>
 						</div>
 						{/* <!-- Primary Navbar items --> */}
 						<div className="hidden md:flex items-center space-x-1 font-sans">
@@ -61,8 +61,7 @@ const Header = () => {
 							<NavLink to="/contact"><button className="top-menu-link">Contact</button></NavLink>
 							<NavLink to="/add-new-tour"><button className="top-menu-link">New Tour</button></NavLink>
 							<NavLink to="/tour-list"><button className="top-menu-link">Tour Management</button></NavLink>
-							<a href="/home" className="top-menu-link">Services</a>
-							<a href="/home" className="top-menu-link">About</a>
+							
 
 						</div>
 					</div>
@@ -102,7 +101,6 @@ const Header = () => {
 								:
 								<>
 									<NavLink to="/login" className="py-2 px-2 font-medium text-gray-500 rounded hover:bg-green-500 hover:text-white transition duration-300">Log In</NavLink>
-									<a href="/home" className="py-2 px-2 font-medium text-white bg-green-500 rounded hover:bg-green-400 transition duration-300">Sign Up</a>
 								</>
 
 
@@ -129,10 +127,11 @@ const Header = () => {
 			{/* <!-- mobile menu --> */}
 			<div className={`mobile-menu ${mobileMenuActive ? " " : "hidden"}`}>
 				<ul className="">
-					<li className="active"><a href="index.html" className="block text-sm px-2 py-4 text-white bg-green-500 font-semibold">Home</a></li>
-					<li><a href="#services" className="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300">Services</a></li>
-					<li><a href="#about" className="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300">About</a></li>
-					<li><a href="#contact" className="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300">Contact Us</a></li>
+					<li className="active"><button onClick={handleLogOut} className="block text-sm px-2 py-4 text-white bg-green-500 font-semibold">Add New Tour</button></li>
+					
+					<li><a href="/" className="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300">Services</a></li>
+					<li><a href="/" className="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300">About</a></li>
+					<li><a href="/" className="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300">Contact Us</a></li>
 				</ul>
 			</div>
 

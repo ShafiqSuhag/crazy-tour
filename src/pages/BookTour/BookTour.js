@@ -30,47 +30,47 @@ const BookTour = () => {
 
                 </form>
                 <form onSubmit={handleSubmit(onSubmit)}>
-                    <div class="form-control">
-                        <label class="label">
-                            <span class="label-text">Your Name</span>
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Your Name</span>
                         </label>
-                        <input type="text" placeholder="Full Name" class="input input-info input-bordered"  {...register("Full Name", { required: true, maxLength: 80 })} />
-                        {/* <label class="label">
-                            <span class="label-text-alt">Please enter data</span>
+                        <input type="text" placeholder="Full Name" className="input input-info input-bordered"  {...register("Full Name", { required: true, maxLength: 80 })} />
+                        {/* <label className="label">
+                            <span className="label-text-alt">Please enter data</span>
                         </label> */}
                     </div>
-                    <div class="form-control">
-                        <label class="label">
-                            <span class="label-text">Email</span>
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Email</span>
                         </label>
-                        <input type="text" placeholder="Email" class="input input-info input-bordered" {...register("Email", { required: true, pattern: /^\S+@\S+$/i })} />
-                        {/* <label class="label">
-                            <span class="label-text-alt">Please enter data</span>
+                        <input type="text" placeholder="Email" className="input input-info input-bordered" {...register("Email", { required: true, pattern: /^\S+@\S+$/i })} />
+                        {/* <label className="label">
+                            <span className="label-text-alt">Please enter data</span>
                         </label> */}
                     </div>
-                    <div class="form-control">
-                        <label class="label">
-                            <span class="label-text">Mobile Number</span>
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Mobile Number</span>
                         </label>
-                        <input type="tel" placeholder="Mobile number" class="input input-info input-bordered" {...register("Mobile number", { required: true, minLength: 6, maxLength: 12 })} />
-                        {/* <label class="label">
-                            <span class="label-text-alt">Please enter data</span>
+                        <input type="tel" placeholder="Mobile number" className="input input-info input-bordered" {...register("Mobile number", { required: true, minLength: 6, maxLength: 12 })} />
+                        {/* <label className="label">
+                            <span className="label-text-alt">Please enter data</span>
                         </label> */}
                     </div>
-                    <div class="form-control">
-                        <label class="label">
-                            <span class="label-text">Departure Date</span>
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Departure Date</span>
                         </label>
-                        <input type="date" placeholder="Departure Date" {...register("Departure Date", { required: true })} class="input input-info input-bordered" />
-                        {/* <label class="label">
-                            <span class="label-text-alt">Please enter data</span>
+                        <input type="date" placeholder="Departure Date" {...register("Departure Date", { required: true })} className="input input-info input-bordered" />
+                        {/* <label className="label">
+                            <span className="label-text-alt">Please enter data</span>
                         </label> */}
                     </div>
                   
-                    <div class="form-control">
-                        <label class="input-group input-group-vertical input-group-lg mt-5">
+                    <div className="form-control">
+                        <label className="input-group input-group-vertical input-group-lg mt-5">
                             <span>Note</span>
-                            <textarea  {...register("Notes", { required: false })}  placeholder="" class="input input-bordered input-lg"/>
+                            <textarea  {...register("Notes", { required: false })}  placeholder="" className="input input-bordered input-lg"/>
                         </label>
                     </div>
                     <input type="submit" className="btn btn-outline btn-accent my-5 block" />

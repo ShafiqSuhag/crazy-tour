@@ -18,7 +18,7 @@ const Home = () => {
     return (
         <div>
             <HeroSection></HeroSection>
-            {/* <button class="btn btn-primary" >daisyUI Button</button> */}
+            {/* <button className="btn btn-primary" >daisyUI Button</button> */}
             This is a homepage
 
             {/* header  */}
