@@ -1,8 +1,9 @@
 import React from 'react';
+import ReactStars from "react-rating-stars-component";
 import { useHistory, useLocation } from 'react-router';
 
 const ServiceCard = (props) => {
-    const {_id, title, duration, description, img, location, price, rating} = props.tour;
+    const {_id, title, duration, description, img, destination, price, rating} = props.tour;
     console.log("props- ",props);
     const browserLocation = useLocation()
     const history = useHistory()
@@ -10,6 +11,11 @@ const ServiceCard = (props) => {
     const handleBookTour = () => {
         history.push("/book-tour")
     }
+    const firstExample = {
+        size: 30,
+        value: rating,
+        edit: false
+      };
 
     return (
         <div className="wrapper  antialiased text-gray-900 mb-10">
@@ -23,7 +29,7 @@ const ServiceCard = (props) => {
                         <div className="flex  justify-between items-center text-sm mt-3">
                             <div>
                                 <i className="fas fa-plane-departure"></i>
-                                <span> {location} </span>
+                                <span> {destination} </span>
                             </div>
                             <div>
                                 <i className="far fa-hourglass"></i>
@@ -35,12 +41,9 @@ const ServiceCard = (props) => {
                         </div>
 
                         <div className=" flex justify-center items-center text-lg font-semibold my-5">
-                            <div className="text-yellow-400">
-                                <i className="fas fa-star"></i>
-                                <i className="fas fa-star"></i>
-                                <i className="fas fa-star"></i>
-                                <i className="fas fa-star"></i>
-                                <i className="fas fa-star"></i>
+                            <div className="text-yellow-400 flex items-center">
+                               
+                                <ReactStars {...firstExample} />
                                 <span className="ml-1">  {rating} </span>
                             </div>
                             {/* <div> 200 SALES </div> */}
@@ -57,15 +60,7 @@ const ServiceCard = (props) => {
 
                                     BOOK TOUR
                                 </button>
-                                {/* <a href="/" target="_blank"
-                                    data-modal-toggle="example"
-                                    data-modal-action="open"
-                                    className=" text-sm text-purple-600 border hover:text-white border-purple-600 px-2 py-1 m-w-32 rounded hover:bg-purple-700 focus:outline-none focus:ring shadow-lg hover:shadow-none transition-all duration-300 " rel="noreferrer"
-                                >
-
-
-                                    <i className="far fa-eye"></i>
-                                </a> */}
+                               
                             </div>
                         </div>
                     </div>

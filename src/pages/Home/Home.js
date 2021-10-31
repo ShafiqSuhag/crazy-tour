@@ -12,7 +12,7 @@ const Home = () => {
             .then(response => response.json())
             .then(result => {
                 console.log(result)
-                setTours(result.products)
+                setTours(result.tours)
             })
     }, [])
     return (
