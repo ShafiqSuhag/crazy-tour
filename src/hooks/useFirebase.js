@@ -24,7 +24,7 @@ const useFirebase = () => {
             // .then((result) => {
 
             //     // setUser(result.user)
-            //     console.log('user data - ',today.toUTCString(), currentUser)
+                // console.log('user data - ',today.toUTCString(), currentUser)
 
             //     // ...
             // }).catch((error) => {
@@ -42,6 +42,8 @@ const useFirebase = () => {
         // console.log('onAuthStateChanged', today.toUTCString(), user, typeof(user), currentUser)
         if (user) {
             setCurrentUser(user)
+            console.log(currentUser)
+
         } else {
             // setCurrentUser({})
         }

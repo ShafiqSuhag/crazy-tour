@@ -34,6 +34,13 @@ const Header = () => {
 	}
 	// auth /
 
+
+	const handleProfileInfo = () => {
+		history.replace("/profile-info")
+	}
+	const handleMyBookings = () => {
+		history.replace("/my-bookings")
+	}
 	return (
 		// <!-- Navbar goes here -->
 		<nav className=" shadow-lg z-20 relative	">
@@ -44,7 +51,7 @@ const Header = () => {
 							{/* <!-- Website Logo --> */}
 							<a href="/" className="flex items-center py-4 px-2">
 								{/* <img src="logo.png" alt="Logo" className="h-8 w-8 mr-2"/> */}
-								<span className="font-semibold text-white text-lg">CRAZY TOUR</span>
+								<span className="font-semibold text-black text-lg">CRAZY TOUR</span>
 							</a>
 						</div>
 						{/* <!-- Primary Navbar items --> */}
@@ -52,6 +59,8 @@ const Header = () => {
 							<NavLink to="/home"><button className="py-4 px-2 text-green-500 border-b-4 border-green-500 font-semibold ">Home</button></NavLink>
 
 							<NavLink to="/contact"><button className="top-menu-link">Contact</button></NavLink>
+							<NavLink to="/add-new-tour"><button className="top-menu-link">New Tour</button></NavLink>
+							<NavLink to="/tour-list"><button className="top-menu-link">Tour Management</button></NavLink>
 							<a href="/home" className="top-menu-link">Services</a>
 							<a href="/home" className="top-menu-link">About</a>
 
@@ -62,7 +71,35 @@ const Header = () => {
 
 						{
 							currentUser?.email ?
-								<button onClick={handleLogOut} className="py-2 px-2 font-medium text-gray-500 rounded hover:bg-green-500 hover:text-white transition duration-300">Log Out</button> :
+								<>
+									<span className="text-black">{currentUser.displayName}</span>
+									<div className="avatar online">
+										<div className="rounded-full w-14 h-14">
+											<img src={currentUser.photoURL} alt="" />
+										</div>
+									</div>
+									{/* <button onClick={handleLogOut} className="py-2 px-2 font-medium text-gray-500 rounded hover:bg-green-500 hover:text-white transition duration-300">Log Out</button> */}
+									<div className="py-2">
+
+										<div className="dropdown inline-block relative">
+											<button className="bg-gray-300 text-gray-700 font-semibold py-2 px-4 rounded inline-flex items-center">
+												<span className="mr-1">Account</span>
+												<svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /> </svg>
+											</button>
+											<ul className="dropdown-menu absolute hidden text-gray-700 pt-1 text-sm text-left">
+												<li className=""><button onClick={handleLogOut} className="bg-gray-200 py-2 px-2 w-full block whitespace-no-wrap font-medium text-gray-500  hover:bg-green-500 hover:text-white transition duration-300">Add New Tour</button></li>
+												<li className=""><button onClick={handleLogOut} className="text-left bg-gray-200 py-2 px-2 w-full block whitespace-no-wrap font-medium text-gray-500  hover:bg-green-500 hover:text-white transition duration-300">Tour List</button></li>
+												<li className=""><button onClick={handleMyBookings} className="text-left bg-gray-200 py-2 px-2 w-full block whitespace-no-wrap font-medium text-gray-500  hover:bg-green-500 hover:text-white transition duration-300">My Bookings</button></li>
+												<li className=""><button onClick={handleProfileInfo} className="text-left bg-gray-200 py-2 px-2 w-full block whitespace-no-wrap font-medium text-gray-500  hover:bg-green-500 hover:text-white transition duration-300">Profile</button></li>
+												<li className=""><button onClick={handleLogOut} className="text-left bg-gray-200 py-2 px-2 w-full block whitespace-no-wrap font-medium text-gray-500  hover:bg-green-500 hover:text-white transition duration-300">Log Out</button></li>
+												
+												
+											</ul>
+										</div>
+
+									</div>
+								</>
+								:
 								<>
 									<NavLink to="/login" className="py-2 px-2 font-medium text-gray-500 rounded hover:bg-green-500 hover:text-white transition duration-300">Log In</NavLink>
 									<a href="/home" className="py-2 px-2 font-medium text-white bg-green-500 rounded hover:bg-green-400 transition duration-300">Sign Up</a>
