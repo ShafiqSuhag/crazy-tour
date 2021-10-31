@@ -62,8 +62,8 @@ const TourList = () => {
                                 <tr className="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
                                     <th className="py-3 px-6 text-left">Tour Title</th>
                                     <th className="py-3 px-6 text-left">Created By</th>
-                                    <th className="py-3 px-6 text-center">User Purchased</th>
-                                    <th className="py-3 px-6 text-center">Status</th>
+                                    <th className="py-3 px-6 text-center">Price</th>
+                                    <th className="py-3 px-6 text-center">Location</th>
                                     <th className="py-3 px-6 text-center">Actions</th>
                                 </tr>
                             </thead>

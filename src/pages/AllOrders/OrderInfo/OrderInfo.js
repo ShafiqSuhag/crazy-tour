@@ -18,7 +18,7 @@ const OrderInfo = (props) => {
                 <span className=" py-1 px-3 rounded-full text-md">${tourPrice}</span>
             </td>
             <td className="py-3 px-6 text-center">
-                <span className=" py-1 px-3 rounded-full text-sm">{orderStatus}</span>
+                <span className=" bg-green-200 text-green-600 py-1 px-3 rounded-full text-xs">{orderStatus}</span>
             </td>
             <td className="py-3 px-6 text-left">
                 <div className="flex items-center">
@@ -39,7 +39,7 @@ const OrderInfo = (props) => {
                 <div className="flex item-center justify-center">
                     {
                         orderStatus === "pending" ?
-                            <button onClick={()=>props.handleActiveOrder(_id)} class="btn btn-sm">
+                            <button onClick={() => props.handleActiveOrder(_id)} class="btn btn-sm">
                                 Active Order
                             </button> : ""
                     }
