@@ -1,22 +1,62 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useParams } from 'react-router';
+import useAuth from '../../hooks/useAuth';
 
 
 
 const BookTour = () => {
+    const [tourDetails, setTourDetails] = useState({})
+    // const { _id, title, duration, description, img, destination, price, rating } = props.tour;
+    let { id } = useParams();
+
+    const { currentUser } = useAuth()
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => console.log(data);
     console.log(errors);
+
+    console.log('book tour id ', id, typeof id)
+
+
+    useEffect(() => {
+        fetch('http://localhost:5000/tour-details', {
+            method: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ id: id })
+        })
+            .then(response => response.json())
+            .then(result => {
+                console.log(result.data[0])
+                setTourDetails(result.data[0])
+            })
+            .catch(err => console.log("add tour error - ", err));
+    }, [])
+
+
     return (
         <div className="flex px-52 py-10">
             <div className="w-7/12 px-10">
-                <img className="w-full rounded-lg" src="https://themeforest.img.customer.envatousercontent.com/files/338759351/01_sway.__large_preview.jpg?auto=compress%2Cformat&q=80&fit=crop&crop=top&max-h=8000&max-w=590&s=0343a0b78fe0332bb3a575451ebcf81e" alt=""/>
-                <h2 className="text-4xl my-5 ">Indinasian Islam</h2>
+                <img className="w-full rounded-lg" src={tourDetails.img} alt="" />
+                <h2 className="text-4xl my-5 "> {tourDetails.title} </h2>
                 <div className="text-xl">
-                    Price : $ <span>500</span>
+                    Price : $ <span> {tourDetails.price}</span>
+                </div>
+                <div className="text-sm my-3">
+                    <div>
+                        Destination : 
+                        <span> {tourDetails.destination} </span>
+                    </div>
+                    <div>
+                        {/* <i className="far fa-hourglass"></i> */}
+                        Duration : 
+                        <span className="text-gray-400"> <span className="text-gray-500"> {tourDetails.duration} Days </span> 	</span>
+                    </div>
                 </div>
                 <div>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, quibusdam, ipsam impedit enim fugiat obcaecati voluptas dolor perferendis quo distinctio at, nesciunt nobis ex. Neque, doloremque incidunt magni magnam nemo est repellat molestias doloribus sit eum quibusdam facere iste voluptates fuga consequatur praesentium temporibus illo maxime corrupti eius non rem!
+                    {tourDetails.description}
                 </div>
             </div>
             <div className="w-5/12">
@@ -34,7 +74,7 @@ const BookTour = () => {
                         <label className="label">
                             <span className="label-text">Your Name</span>
                         </label>
-                        <input type="text" placeholder="Full Name" className="input input-info input-bordered"  {...register("Full Name", { required: true, maxLength: 80 })} />
+                        <input type="text" placeholder="Full Name" value={currentUser.displayName} className="input input-info input-bordered" value="sohag"  {...register("Full Name", { required: true, maxLength: 80 })} />
                         {/* <label className="label">
                             <span className="label-text-alt">Please enter data</span>
                         </label> */}
@@ -43,7 +83,7 @@ const BookTour = () => {
                         <label className="label">
                             <span className="label-text">Email</span>
                         </label>
-                        <input type="text" placeholder="Email" className="input input-info input-bordered" {...register("Email", { required: true, pattern: /^\S+@\S+$/i })} />
+                        <input type="text" placeholder="Email" value={currentUser.email} className="input input-info input-bordered" {...register("Email", { required: true, pattern: /^\S+@\S+$/i })} />
                         {/* <label className="label">
                             <span className="label-text-alt">Please enter data</span>
                         </label> */}
@@ -66,11 +106,11 @@ const BookTour = () => {
                             <span className="label-text-alt">Please enter data</span>
                         </label> */}
                     </div>
-                  
+
                     <div className="form-control">
                         <label className="input-group input-group-vertical input-group-lg mt-5">
                             <span>Note</span>
-                            <textarea  {...register("Notes", { required: false })}  placeholder="" className="input input-bordered input-lg"/>
+                            <textarea  {...register("Notes", { required: false })} placeholder="" className="input input-bordered input-lg" />
                         </label>
                     </div>
                     <input type="submit" className="btn btn-outline btn-accent my-5 block" />

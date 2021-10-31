@@ -1,21 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactStars from "react-rating-stars-component";
 import { useHistory, useLocation } from 'react-router';
 
 const ServiceCard = (props) => {
-    const {_id, title, duration, description, img, destination, price, rating} = props.tour;
-    console.log("props- ",props);
+    const { _id, title, duration, description, img, destination, price, rating } = props.tour;
+    console.log("props- ", props);
     const browserLocation = useLocation()
     const history = useHistory()
 
-    const handleBookTour = () => {
-        history.push("/book-tour")
+    const handleBookTour = (id) => {
+        history.push("/book-tour/" + id)
     }
-    const firstExample = {
+    const ratingConfig = {
         size: 30,
         value: rating,
         edit: false
-      };
+    };
+
+
+    
 
     return (
         <div className="wrapper  antialiased text-gray-900 mb-10">
@@ -37,13 +40,13 @@ const ServiceCard = (props) => {
                             </div>
                         </div>
                         <div className="my-5">
-                            {description.substring(0,120)}...
+                            {description.substring(0, 120)}...
                         </div>
 
                         <div className=" flex justify-center items-center text-lg font-semibold my-5">
                             <div className="text-yellow-400 flex items-center">
-                               
-                                <ReactStars {...firstExample} />
+
+                                <ReactStars {...ratingConfig} />
                                 <span className="ml-1">  {rating} </span>
                             </div>
                             {/* <div> 200 SALES </div> */}
@@ -52,7 +55,7 @@ const ServiceCard = (props) => {
                             <div className="text-2xl font-bold">${price}</div>
                             <div>
                                 <button
-                                    onClick={handleBookTour}
+                                    onClick={() => handleBookTour(_id)}
                                     data-modal-toggle="example"
                                     data-modal-action="open"
                                     className=" text-sm bg-indigo-600 font-semibold text-white px-2 py-1 m-w-32 rounded hover:bg-purple-700 focus:outline-none focus:ring shadow-lg hover:shadow-none transition-all duration-300 mr-2"
@@ -60,7 +63,7 @@ const ServiceCard = (props) => {
 
                                     BOOK TOUR
                                 </button>
-                               
+
                             </div>
                         </div>
                     </div>
