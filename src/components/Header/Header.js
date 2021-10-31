@@ -43,7 +43,7 @@ const Header = () => {
 	}
 	return (
 		// <!-- Navbar goes here -->
-		<nav className=" shadow-lg z-20 relative	">
+		<nav className="bg-white shadow-lg z-20 relative	">
 			<div className="max-w-6xl mx-auto px-4">
 				<div className="flex justify-between">
 					<div className="flex space-x-7">
@@ -56,9 +56,10 @@ const Header = () => {
 						</div>
 						{/* <!-- Primary Navbar items --> */}
 						<div className="hidden md:flex items-center space-x-1 font-sans">
-							<NavLink to="/home"><button className="py-4 px-2 text-green-500 border-b-4 border-green-500 font-semibold ">Home</button></NavLink>
+							<NavLink to="/home"><button className="top-menu-link">Home</button></NavLink>
+							{/* <NavLink to="/home"><button className="py-4 px-2 text-green-500 border-b-4 border-green-500 font-semibold ">Home</button></NavLink> */}
 
-							<NavLink to="/contact"><button className="top-menu-link">Contact</button></NavLink>
+							{/* <NavLink to="/contact"><button className="top-menu-link">Contact</button></NavLink> */}
 							<NavLink to="/add-new-tour"><button className="top-menu-link">New Tour</button></NavLink>
 							<NavLink to="/tour-list"><button className="top-menu-link">Tour Management</button></NavLink>
 							

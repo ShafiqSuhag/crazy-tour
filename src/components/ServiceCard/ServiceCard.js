@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import ReactStars from "react-rating-stars-component";
 import { useHistory, useLocation } from 'react-router';
+import SpinnerLoader from '../Animation/SpinnerLoader/SpinnerLoader';
 
 const ServiceCard = (props) => {
     const { _id, title, duration, description, img, destination, price, rating } = props.tour;
@@ -18,14 +19,23 @@ const ServiceCard = (props) => {
     };
 
 
-    
+
 
     return (
         <div className="wrapper  antialiased text-gray-900 mb-10">
             <div>
                 {/* theme image  */}
-                <img src={img} alt=" theme preview " className="w-full object-cover object-center rounded-lg shadow-md h-60" />
-                <div className="relative px-4 -mt-16  ">
+                <div className="flex pb-5 relative h-48">
+                {/* <img src={img} alt="course item" className="rounded  top-0 z-20" /> */}
+                    <img src={img} alt=" theme preview " className="w-full absulate  top-0 z-20 object-cover object-center rounded-lg shadow-md h-60" />
+                    {/* <Preloader className="h-48 bg-white absolute left-0 top-0 z-10"></Preloader> */}
+                    <div className="w-full bg-white absolute top-0 left-0 z-10">
+                        <SpinnerLoader></SpinnerLoader>
+                    </div>
+
+                </div>
+                
+                <div className=" px-4 -mt-10  relative z-30">
                     <div className="bg-white p-6 rounded-lg shadow-lg">
 
                         <h4 title="SWAY - MULTI" className="mt-1 text-lg font-semibold uppercase leading-tight truncate"> {title} </h4>

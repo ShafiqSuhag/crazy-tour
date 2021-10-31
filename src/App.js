@@ -13,7 +13,7 @@ import Contact from "./pages/Contact/Contact";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import MyBookins from "./pages/MyBookings/MyBookins";
-import NotFound from "./pages/NotFound/NotFound";
+import PageNotFound from "./pages/PageNotFound/PageNotFound";
 import ProfileInfo from "./pages/ProfileInfo/ProfileInfo";
 import TourList from "./pages/TourList/TourList";
 
@@ -52,7 +52,7 @@ function App() {
               <Login></Login>
             </Route>
             <Route path="*">
-              <NotFound></NotFound>
+              <PageNotFound></PageNotFound>
             </Route>
           </Switch>
           <Footer></Footer>

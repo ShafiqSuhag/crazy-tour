@@ -5,28 +5,7 @@ const TourInfo = (props) => {
     // const {testFunc} = props.testFunc
     console.log(props)
 
-    // const handleDelete = (id, title) => {
-    //     console.log('delet clik')
-    //     let txt;
-    //     let r = window.confirm("Are you sure want to delete "+ title);
-    //     if (r == true) {
-    //         // txt = "You pressed OK!";
-    //         fetch('http://localhost:5000/tour', {
-    //             method: "DELETE",
-    //             headers: {
-    //                 'Accept': 'application/json',
-    //                 'Content-Type': 'application/json'
-    //             },
-    //             body: JSON.stringify({id:id})
-    //         })
-    //             .then(response => response.json())
-    //             .then(result => console.log(result))
-    //             .catch(err => console.log("add tour error - ", err));
-    //     } else {
-    //         // txt = "You pressed Cancel!";
-    //         console.log('skip delete')
-    //     }
-    // }
+    
     return (
         <tr className="border-b border-gray-200 hover:bg-gray-100">
             <td className="py-3 px-6 text-left">

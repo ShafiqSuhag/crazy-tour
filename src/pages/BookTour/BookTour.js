@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router';
 import useAuth from '../../hooks/useAuth';
+import useServerConfig from '../../hooks/useServerConfig';
 
 
 
 const BookTour = () => {
+    const serverUrl = useServerConfig()
     const [tourDetails, setTourDetails] = useState({})
     // const { _id, title, duration, description, img, destination, price, rating } = props.tour;
     let { id } = useParams();
@@ -19,7 +21,7 @@ const BookTour = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/tour-details', {
+        fetch(serverUrl + '/tour-details', {
             method: "POST",
             headers: {
                 'Accept': 'application/json',
@@ -46,12 +48,12 @@ const BookTour = () => {
                 </div>
                 <div className="text-sm my-3">
                     <div>
-                        Destination : 
+                        Destination :
                         <span> {tourDetails.destination} </span>
                     </div>
                     <div>
                         {/* <i className="far fa-hourglass"></i> */}
-                        Duration : 
+                        Duration :
                         <span className="text-gray-400"> <span className="text-gray-500"> {tourDetails.duration} Days </span> 	</span>
                     </div>
                 </div>

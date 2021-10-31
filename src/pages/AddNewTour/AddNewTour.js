@@ -2,22 +2,24 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import ReactStars from "react-rating-stars-component";
 import useAuth from '../../hooks/useAuth';
+import useServerConfig from '../../hooks/useServerConfig';
+
 
 
 const AddNewTour = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { currentUser, logOut, setCurrentUser, setError } = useAuth()
+    const serverUrl = useServerConfig()
 
-
-    let newRating=0 
+    let newRating = 0
     const onSubmit = async (data) => {
         console.log(data)
         // custom data 
-        data["rating"]=newRating;
-        data["userPhotoUrl"]= currentUser.photoURL
-        data["userName"]= currentUser.displayName
+        data["rating"] = newRating;
+        data["userPhotoUrl"] = currentUser.photoURL
+        data["userName"] = currentUser.displayName
         // custom data ./
-        fetch('http://localhost:5000/tour', {
+        fetch(serverUrl + '/tour', {
             method: "POST",
             headers: {
                 'Accept': 'application/json',
@@ -30,11 +32,11 @@ const AddNewTour = () => {
             .catch(err => console.log("add tour error - ", err));
     };
     console.log(errors);
-    
+
     const ratingChanged = (ratingValue) => {
         newRating = ratingValue;
         console.log(newRating);
-      };
+    };
     return (
         <div className="relative min-h-screen flex items-center justify-center bg-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 bg-gray-500 bg-no-repeat bg-cover relative items-center"
             style={{ backgroundImage: "url(https://images.unsplash.com/photo-1532423622396-10a3f979251a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1500&q=80)" }}>
@@ -95,13 +97,13 @@ const AddNewTour = () => {
                                 <div className="md:flex flex-row md:space-x-4 w-full text-xs">
                                     <div className="mb-3 space-y-2 w-full text-xs">
                                         <label className="font-semibold text-gray-600 py-2">Destination <abbr title="required">*</abbr></label>
-                                       
+
                                         <input type="text" placeholder="destination" {...register("destination", { required: true })} className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4" />
                                         <p className="text-red text-xs hidden">Please fill out this field.</p>
                                     </div>
                                     <div className="mb-3 space-y-2 w-full text-xs">
                                         <label className="font-semibold text-gray-600 py-2">Tour Duration (Days)* <abbr title="required">*</abbr></label>
-                                       
+
                                         <select {...register("duration", { required: true })} className="block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4 md:w-full " >
                                             {
                                                 [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30].map(day => <option key={day} value={day}>{day}</option>)
@@ -128,8 +130,8 @@ const AddNewTour = () => {
 
                                 </div>
                                 <div>
-                                <ReactStars  isHalf={true}   count={5}     onChange={ratingChanged}     size={24}     activeColor="#ffd700"   />
-                                    </div>
+                                    <ReactStars isHalf={true} count={5} onChange={ratingChanged} size={24} activeColor="#ffd700" />
+                                </div>
                                 <p className="text-xs text-red-500 text-right my-3">Required fields are marked with an
                                     asterisk <abbr title="Required field">*</abbr></p>
                                 <div className="mt-5 text-right md:space-x-3 md:block flex flex-col-reverse">

@@ -13,6 +13,7 @@ const useFirebase = () => {
         
     // }, [])
 
+    const [isLoading, setIsLoading] = useState(true)
     const [error, setError] = useState('')
     const [currentUser, setCurrentUser] = useState({})
 
@@ -43,8 +44,9 @@ const useFirebase = () => {
         if (user) {
             setCurrentUser(user)
             console.log(currentUser)
-
+            setIsLoading(false)
         } else {
+            setIsLoading(true)
             // setCurrentUser({})
         }
     });
@@ -74,7 +76,9 @@ const useFirebase = () => {
         error,
         setError,
         signInWIthGoogle,
-        logOut
+        logOut, 
+        isLoading, 
+        setIsLoading
     }
 
 };

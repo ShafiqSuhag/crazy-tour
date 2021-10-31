@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
+import useServerConfig from '../../hooks/useServerConfig';
 import TourInfo from './TourInfo/TourInfo';
 
 const TourList = () => {
 
-
+    const serverUrl = useServerConfig()
+    console.log('serverUrl', serverUrl);
     // tour list dynamic 
     const [tours, setTours] = useState([])
     useEffect(() => {
         console.log('test--------')
-        fetch('http://localhost:5000/tours')
+        fetch(serverUrl + '/tours')
             .then(response => response.json())
             .then(async (result) => {
                 setTours(result.tours)
@@ -23,23 +25,23 @@ const TourList = () => {
     const handleDelete = (id, title) => {
         console.log('delet clik')
         let txt;
-        let r = window.confirm("Are you sure want to delete "+ title);
+        let r = window.confirm("Are you sure want to delete " + title);
         if (r == true) {
             // txt = "You pressed OK!";
-            fetch('http://localhost:5000/tour', {
+            fetch(serverUrl + '/tour', {
                 method: "DELETE",
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({id:id})
+                body: JSON.stringify({ id: id })
             })
                 .then(response => response.json())
                 .then(result => {
                     console.log(result)
-                    const newTourLIst = tours.filter(tour => tour._id !== result.id )
+                    const newTourLIst = tours.filter(tour => tour._id !== result.id)
                     setTours(newTourLIst)
-                
+
                 })
                 .catch(err => console.log("add tour error - ", err));
         } else {
