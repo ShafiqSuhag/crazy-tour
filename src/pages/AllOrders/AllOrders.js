@@ -6,7 +6,7 @@ import OrderInfo from './OrderInfo/OrderInfo';
 
 const AllOrders = () => {
     const { slug } = useParams();
-    
+
 
     console.log('slug', slug)
 
@@ -15,12 +15,12 @@ const AllOrders = () => {
     console.log('serverUrl', serverUrl);
     // tour list dynamic 
     useEffect(() => {
-        
+
         fetch(serverUrl + '/all-orders')
             .then(response => response.json())
-            .then( (result) => {
-                 console.log(result.orderList)
-                 setOrderList(result.orderList)
+            .then((result) => {
+                console.log(result.orderList)
+                setOrderList(result.orderList)
                 //  console.log('order list - ', result.orderList);
             })
     }, [serverUrl])
@@ -57,19 +57,28 @@ const AllOrders = () => {
     }
 
     const handleActiveOrder = (id) => {
-        fetch(serverUrl + '/my-orders/' + id, {
+        fetch(serverUrl + '/update-order-status/' + id, {
             method: "GET",
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-        
+
         })
             .then(response => response.json())
             .then(result => {
                 console.log(result)
-                const newOrderList = orderList.filter(order => order._id !== result.id)
-                setOrderList(newOrderList)
+                if (result.success) {
+                    fetch(serverUrl + '/all-orders')
+                        .then(response => response.json())
+                        .then((result) => {
+                            console.log(result.orderList)
+                            setOrderList(result.orderList)
+                            //  console.log('order list - ', result.orderList);
+                        })
+                } else {
+                    alert("Update unsuccessfull. ")
+                }
 
             })
             .catch(err => console.log("add tour error - ", err));
@@ -89,7 +98,7 @@ const AllOrders = () => {
                                     <th className="py-3 px-6 text-center">Package Price</th>
                                     <th className="py-3 px-6 text-left">Order Status </th>
                                     <th className="py-3 px-6 text-left">Purchased By</th>
-                                    
+
                                     <th className="py-3 px-6 text-center">Mobile</th>
                                     <th className="py-3 px-6 text-center">Actions</th>
                                 </tr>

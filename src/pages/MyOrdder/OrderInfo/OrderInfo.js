@@ -1,7 +1,7 @@
 import React from 'react';
 
 const OrderInfo = (props) => {
-    const { _id, fullName,mobileNumber, tourTitle, tourPrice, tourId, tourImg, Notes,   userPhotoUrl, userName, userId,tourDestination, tourDuration } = props.orderInfo;
+    const { _id, fullName,mobileNumber, tourTitle, tourPrice, tourId, tourImg, Notes, orderStatus,   userPhotoUrl, userName, userId,tourDestination, tourDuration } = props.orderInfo;
     return (
         <tr className="border-b border-gray-200 hover:bg-gray-100">
             <td className="py-3 px-6 text-left">
@@ -16,6 +16,9 @@ const OrderInfo = (props) => {
             </td>
             <td className="py-3 px-6 text-center">
                 <span className=" py-1 px-3 rounded-full text-md">${tourPrice}</span>
+            </td>
+            <td className="py-3 px-6 text-center">
+                <span className=" py-1 px-3 rounded-full text-sm">{orderStatus}</span>
             </td>
             <td className="py-3 px-6 text-left">
                 <div className="flex items-center">

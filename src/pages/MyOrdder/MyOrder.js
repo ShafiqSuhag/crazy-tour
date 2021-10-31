@@ -70,6 +70,7 @@ const MyOrder = () => {
                                 <tr className="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
                                     <th className="py-3 px-6 text-left">Tour Info</th>
                                     <th className="py-3 px-6 text-center">Package Price</th>
+                                    <th className="py-3 px-6 text-left">Order Status </th>
                                     <th className="py-3 px-6 text-left">Purchased By</th>
                                     <th className="py-3 px-6 text-center">Mobile</th>
                                     <th className="py-3 px-6 text-center">Actions</th>
